@@ -1,0 +1,13 @@
+https://forum.qt.io/topic/12218/solved-how-to-decide-whether-to-build-in-debug-or-release-mode
+
+How to decide whether to build in debug or release mode
+
+add to your *.pro file line:
+@CONFIG += debug_and_release@
+
+now do qmake
+it will generate Makefile Makefile.Debug Makefile.Release
+
+enjoy
+make release
+or make debug now ;-)
