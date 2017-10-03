@@ -1,0 +1,2 @@
+https://askubuntu.com/questions/588800/setup-virtual-serial-ports-linux-null-modem-emulator-using-tty0tty
+
