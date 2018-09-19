@@ -1,0 +1,5 @@
+git rebase -i HEAD~2 (for 2 last commits)
+... edit
+:wq  // save and exit
+
+git commit --amend
