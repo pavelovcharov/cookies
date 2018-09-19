@@ -1,0 +1,5 @@
+Eliminate Duplicates in PowerShell History
+https://blogs.technet.microsoft.com/heyscriptingguy/2015/12/21/powertip-eliminate-duplicates-in-powershell-history-2/
+
+
+Set-PSReadLineOption –HistoryNoDuplicates:$True
