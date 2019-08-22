@@ -1,0 +1,32 @@
+How to Convert a Mercurial Repository to Git on Windows
+November 16. 2013 1 Comment  Posted in: DVCS git Mercurial
+There are various guides on the internet to converting a Mercurial repository into a git one, but I found that they tended to assume you had certain things installed that might not be there on a Windows PC. So here’s how I did it, with TortoiseHg installed for Mercurial, and using the version of git that comes with GitHub for Windows. (both hg and git need to be in your path to run the commands shown here).
+
+Step 1 – Clone hg-git
+hg-git is a Mercurial extension. This seems to be the official repository. Clone it locally:
+
+hg clone https://bitbucket.org/durin42/hg-git
+Step 2 - Add hg-git as an extension
+You now need to add hg-git as a mercurial extension. This can either be done by editing the mercurial.ini file that TortoiseHg puts in your user folder, or just enable it for this one repository, by editing (or creating) the hgrc file in the .hg folder and adding the following configuration
+
+[extensions]
+hggit = c:/users/mark/code/temp/hg-git/hggit
+Step 3 – Create a bare git repo to convert into
+You now need a git repository to convert into. If you already have one created on GitHub or BitBucket, then this step is unnecessary. But if you want to push to a local git repository, then it needs to be a “bare” repo, or you’ll get this error: abort: git remote error: refs/heads/master failed to update. Here’s how you make a bare git repository:
+
+git init --bare git_repo
+Step 4 – Push to Git from Mercurial
+Navigate to the mercurial repository you wish to convert. The hg-git documentation says you need to run the following one-time configuration:
+
+hg bookmarks hg
+And having done that, you can now push to your git repository, with the following simple command:
+
+hg push path\to\git_repo
+You should see that all your commits have been pushed to git, and you can navigate into the bare repository folder and do a git log to make sure it worked.
+
+Step 5 – Get a non-bare git repository
+If you followed step 3 and converted into a bare repository, you might want to convert to a regular git repository. Do that by cloning it again:
+
+git clone git_bare_repo git_regular_repo
+
+https://markheath.net/post/how-to-convert-mercurial-repository-to
